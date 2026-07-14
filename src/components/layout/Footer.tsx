@@ -1,5 +1,26 @@
 import Link from 'next/link'
-import { Instagram, Youtube, Linkedin, Twitter } from 'lucide-react'
+
+// Inline SVG icons — avoids lucide version compatibility issues for brand icons
+const IconInstagram = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+  </svg>
+)
+const IconYoutube = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
+  </svg>
+)
+const IconLinkedin = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+  </svg>
+)
+const IconX = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.264 5.633L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
+  </svg>
+)
 
 const footerLinks = {
   Company: [
@@ -22,10 +43,10 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { icon: Instagram, label: 'Instagram', href: 'https://instagram.com/frameaxis' },
-  { icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@frameaxis' },
-  { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/company/frameaxis' },
-  { icon: Twitter, label: 'Twitter / X', href: 'https://twitter.com/frameaxis' },
+  { icon: IconInstagram, label: 'Instagram', href: 'https://instagram.com/frameaxis' },
+  { icon: IconYoutube, label: 'YouTube', href: 'https://youtube.com/@frameaxis' },
+  { icon: IconLinkedin, label: 'LinkedIn', href: 'https://linkedin.com/company/frameaxis' },
+  { icon: IconX, label: 'Twitter / X', href: 'https://twitter.com/frameaxis' },
 ]
 
 export default function Footer() {
@@ -84,7 +105,7 @@ export default function Footer() {
                   aria-label={label}
                   className="w-9 h-9 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center text-text-muted hover:text-text-primary hover:border-white/20 hover:bg-white/10 transition-all duration-150"
                 >
-                  <Icon size={15} />
+                  <Icon />
                 </a>
               ))}
             </div>

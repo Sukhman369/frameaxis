@@ -26,7 +26,7 @@ const differentiators = [
     icon: TrendingUp,
     title: 'Performance-Driven Editing',
     description:
-      'We don't just make videos look good. We edit for metrics — watch time, CTR, ROAS, and retention curves.',
+      "We don't just make videos look good. We edit for metrics — watch time, CTR, ROAS, and retention curves.",
     stat: '97%',
     statLabel: 'client retention rate',
     iconColor: 'text-brand-success',

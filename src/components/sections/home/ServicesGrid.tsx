@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import Badge from '@/components/ui/Badge'
 import {
-  Youtube, Smartphone, Megaphone, Film, MonitorPlay, Mic
+  Clapperboard, Smartphone, Megaphone, Film, MonitorPlay, Mic
 } from 'lucide-react'
 
 const services = [
   {
-    icon: Youtube,
+    icon: Clapperboard,
     title: 'YouTube & Long-Form',
     tagline: 'Keep viewers hooked from second one.',
     description:
@@ -102,7 +102,7 @@ export default function ServicesGrid() {
             />
             <div className="relative z-10">
               <div className="w-12 h-12 rounded-xl bg-brand-primary/15 border border-brand-primary/25 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Youtube size={22} className="text-brand-primary" />
+                <Clapperboard size={22} className="text-brand-primary" />
               </div>
               <Badge variant="brand" className="mb-4">Most Requested</Badge>
               <h3 className="font-display text-2xl md:text-3xl text-text-primary tracking-wide mb-3">
