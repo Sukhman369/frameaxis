@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
-/* ─── CSS Custom Properties ─────────────────────────────────── */
+/* ─── CSS Custom Properties (Bright & Sparkling Light Theme) ─── */
 :root {
   /* Brand Colors */
-  --brand-primary: #5b4aff;
-  --brand-accent: #c8ff00;
-  --brand-success: #00e87a;
+  --brand-primary: #4f46e5;   /* Electric Indigo */
+  --brand-accent: #d946ef;    /* Sparkling Fuchsia */
+  --brand-success: #10b981;   /* Emerald Green */
 
   /* Backgrounds */
-  --bg-base: #080810;
-  --bg-surface: #111118;
-  --bg-elevated: #1a1a26;
-  --bg-border: rgba(255, 255, 255, 0.08);
+  --bg-base: #f7f9fd;         /* Soft sparkling base */
+  --bg-surface: #ffffff;      /* Pure white surface */
+  --bg-elevated: #f1f4fa;     /* Light slate elevated */
+  --bg-border: rgba(15, 23, 42, 0.08); /* Soft dark border */
 
   /* Text */
-  --text-primary: #f0f0f5;
-  --text-secondary: #9090a8;
-  --text-muted: #5a5a72;
+  --text-primary: #0f172a;    /* Rich slate 900 */
+  --text-secondary: #475569;  /* Slate 600 */
+  --text-muted: #64748b;      /* Slate 500 */
 
-  /* Fonts mapped from Next.js */
+  /* Fonts */
   --font-display: var(--font-bebas), "Bebas Neue", sans-serif;
   --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
   --font-mono: var(--font-mono), monospace;
@@ -65,8 +65,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(91, 74, 255, 0.35); }
-  50%       { box-shadow: 0 0 50px rgba(91, 74, 255, 0.75); }
+  0%, 100% { box-shadow: 0 0 20px rgba(79, 70, 229, 0.15); }
+  50%       { box-shadow: 0 0 50px rgba(217, 70, 239, 0.35); }
 }
 
 @keyframes fade-up {
@@ -74,7 +74,7 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ─── Utility Classes (Standard CSS) ────────────────────────── */
+/* ─── Styling Utilities (Bright Sparkling Adaptions) ──────────── */
 .container-frame {
   width: 100%;
   max-width: 1280px;
@@ -104,47 +104,50 @@
 }
 
 .gradient-brand {
-  background: linear-gradient(135deg, #5b4aff 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #4f46e5 0%, #d946ef 100%);
 }
 
 .gradient-accent {
-  background: linear-gradient(135deg, #c8ff00 0%, #00e87a 100%);
+  background: linear-gradient(135deg, #ec4899 0%, #ff4d4d 100%);
 }
 
 .gradient-text-brand {
-  background: linear-gradient(135deg, #5b4aff 0%, #a78bfa 100%);
+  background: linear-gradient(135deg, #4f46e5 0%, #8b5cf6 50%, #d946ef 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-accent {
-  background: linear-gradient(135deg, #c8ff00 0%, #00e87a 100%);
+  background: linear-gradient(135deg, #ff007f 0%, #ec4899 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* Bright Glassmorphism effects with light shadows */
 .glass {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
 }
 
 .glass-dark {
-  background: rgba(8, 8, 16, 0.75);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
 .glow-brand {
-  box-shadow: 0 0 30px rgba(91, 74, 255, 0.35);
+  box-shadow: 0 10px 30px rgba(79, 70, 229, 0.15);
 }
 
 .glow-accent {
-  box-shadow: 0 0 30px rgba(200, 255, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(217, 70, 239, 0.15);
 }
 
 .noise-overlay {
@@ -155,10 +158,10 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 .section-padding {
@@ -185,7 +188,7 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-surface);
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--brand-primary);

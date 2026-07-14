@@ -24,13 +24,13 @@ export default function PricingTeaser() {
           </p>
 
           {/* Billing Toggle */}
-          <div className="inline-flex items-center gap-3 bg-bg-elevated border border-white/8 rounded-xl p-1">
+          <div className="inline-flex items-center gap-3 bg-[#e2e8f0] border border-bg-border rounded-xl p-1">
             <button
               onClick={() => setAnnual(false)}
               className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all ${
                 !annual
-                  ? 'bg-brand-primary text-white shadow-[0_0_20px_rgba(91,74,255,0.4)]'
-                  : 'text-text-muted hover:text-text-secondary'
+                  ? 'bg-brand-primary text-white shadow-[0_5px_15px_rgba(79,70,229,0.3)]'
+                  : 'text-text-secondary hover:text-text-primary'
               }`}
             >
               Monthly
@@ -39,12 +39,12 @@ export default function PricingTeaser() {
               onClick={() => setAnnual(true)}
               className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
                 annual
-                  ? 'bg-brand-primary text-white shadow-[0_0_20px_rgba(91,74,255,0.4)]'
-                  : 'text-text-muted hover:text-text-secondary'
+                  ? 'bg-brand-primary text-white shadow-[0_5px_15px_rgba(79,70,229,0.3)]'
+                  : 'text-text-secondary hover:text-text-primary'
               }`}
             >
               Annual
-              <span className="text-xs bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-1.5 py-0.5 rounded-md font-mono">
+              <span className="text-xs bg-brand-accent/15 text-brand-accent border border-brand-accent/20 px-1.5 py-0.5 rounded-md font-mono">
                 -17%
               </span>
             </button>
@@ -58,13 +58,13 @@ export default function PricingTeaser() {
             const isPopular = tier.badge === 'most-popular'
             const isBestValue = tier.badge === 'best-value'
 
-            return (
+             return (
               <div
                 key={tier.id}
                 className={`relative flex flex-col rounded-2xl border p-7 transition-all duration-300 ${
                   isPopular
-                    ? 'bg-brand-primary/8 border-brand-primary/50 shadow-[0_0_40px_rgba(91,74,255,0.15)]'
-                    : 'bg-bg-elevated border-white/8 hover:border-white/18'
+                    ? 'bg-brand-primary/5 border-brand-primary/45 shadow-[0_10px_35px_rgba(79,70,229,0.08)]'
+                    : 'bg-bg-surface border-bg-border hover:border-text-primary/20 shadow-sm hover:shadow-md'
                 }`}
               >
                 {/* Badge */}
@@ -73,8 +73,8 @@ export default function PricingTeaser() {
                     <span
                       className={`px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
                         isPopular
-                          ? 'bg-brand-primary text-white shadow-[0_0_20px_rgba(91,74,255,0.5)]'
-                          : 'bg-brand-accent text-bg-base'
+                          ? 'bg-brand-primary text-white shadow-[0_5px_15px_rgba(79,70,229,0.3)]'
+                          : 'bg-brand-accent text-white shadow-[0_5px_15px_rgba(217,70,239,0.3)]'
                       }`}
                     >
                       {isPopular ? 'Most Popular' : 'Best Value'}
@@ -91,7 +91,7 @@ export default function PricingTeaser() {
                 </div>
 
                 {/* Price */}
-                <div className="mb-6 pb-6 border-b border-white/8">
+                <div className="mb-6 pb-6 border-b border-bg-border">
                   {price !== null ? (
                     <div className="flex items-baseline gap-1">
                       <span className="font-display text-5xl text-text-primary tracking-tight">
@@ -133,8 +133,8 @@ export default function PricingTeaser() {
                   href={tier.cta.href}
                   className={`w-full py-3 rounded-xl text-sm font-semibold text-center transition-all duration-200 active:scale-95 ${
                     isPopular
-                      ? 'bg-brand-primary text-white hover:bg-[#4a3aee] shadow-[0_0_25px_rgba(91,74,255,0.4)]'
-                      : 'bg-white/8 text-text-primary border border-white/12 hover:bg-white/12 hover:border-white/22'
+                      ? 'bg-brand-primary text-white hover:bg-[#4a3aee] shadow-[0_5px_15px_rgba(79,70,229,0.35)]'
+                      : 'bg-black/5 text-text-primary border border-bg-border hover:bg-black/8 hover:border-text-primary/10'
                   }`}
                 >
                   {tier.cta.label}
@@ -145,14 +145,14 @@ export default function PricingTeaser() {
         </div>
 
         {/* Enterprise Row */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl bg-bg-elevated border border-white/8 px-8 py-5">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl bg-bg-surface border border-bg-border px-8 py-5 shadow-sm">
           <div>
             <h3 className="font-semibold text-text-primary mb-0.5">{enterpriseTier.name}</h3>
             <p className="text-text-muted text-sm">{enterpriseTier.description}</p>
           </div>
           <Link
             href={enterpriseTier.cta.href}
-            className="shrink-0 px-6 py-2.5 rounded-xl text-sm font-semibold border border-white/15 text-text-primary hover:border-white/30 hover:bg-white/5 transition-all"
+            className="shrink-0 px-6 py-2.5 rounded-xl text-sm font-semibold border border-bg-border text-text-primary hover:border-text-primary/20 hover:bg-black/5 transition-all"
           >
             {enterpriseTier.cta.label}
           </Link>

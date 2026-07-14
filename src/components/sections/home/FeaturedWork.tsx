@@ -4,12 +4,12 @@ import { featuredCaseStudies } from '@/data/case-studies'
 import { ArrowUpRight } from 'lucide-react'
 
 const categoryColors: Record<string, string> = {
-  youtube: 'text-red-400 bg-red-400/10 border-red-400/20',
-  'social-ads': 'text-blue-400 bg-blue-400/10 border-blue-400/20',
-  saas: 'text-brand-primary bg-brand-primary/10 border-brand-primary/20',
-  podcast: 'text-purple-400 bg-purple-400/10 border-purple-400/20',
-  'brand-film': 'text-amber-400 bg-amber-400/10 border-amber-400/20',
-  'product-launch': 'text-green-400 bg-green-400/10 border-green-400/20',
+  youtube: 'text-[#ef4444] bg-[#ee4444]/5 border-[#ef4444]/15',
+  'social-ads': 'text-[#3b82f6] bg-[#3b82f6]/5 border-[#3b82f6]/15',
+  saas: 'text-brand-primary bg-brand-primary/5 border-brand-primary/15',
+  podcast: 'text-[#a855f7] bg-[#a855f7]/5 border-[#a855f7]/15',
+  'brand-film': 'text-[#f59e0b] bg-[#f59e0b]/5 border-[#f59e0b]/15',
+  'product-launch': 'text-[#10b981] bg-[#10b981]/5 border-[#10b981]/15',
 }
 
 export default function FeaturedWork() {
@@ -40,7 +40,7 @@ export default function FeaturedWork() {
             <Link
               key={cs.slug}
               href={`/work/${cs.slug}`}
-              className="group flex flex-col bg-bg-elevated rounded-2xl border border-white/8 overflow-hidden hover:border-white/20 transition-all duration-300 hover:-translate-y-1"
+              className="group flex flex-col bg-bg-surface rounded-2xl border border-bg-border overflow-hidden hover:border-text-primary/20 shadow-sm transition-all duration-300 hover:-translate-y-1"
             >
               {/* Thumbnail */}
               <div
@@ -48,10 +48,10 @@ export default function FeaturedWork() {
                 style={{
                   background: `linear-gradient(135deg, ${
                     index === 0
-                      ? 'rgba(91,74,255,0.3) 0%, rgba(139,92,246,0.2)'
+                      ? 'rgba(79,70,229,0.15) 0%, rgba(217,70,239,0.1)'
                       : index === 1
-                      ? 'rgba(200,255,0,0.2) 0%, rgba(0,232,122,0.15)'
-                      : 'rgba(91,74,255,0.2) 0%, rgba(200,255,0,0.1)'
+                      ? 'rgba(217,70,239,0.15) 0%, rgba(250,70,70,0.1)'
+                      : 'rgba(79,70,229,0.12) 0%, rgba(0,229,255,0.08)'
                   } 100%)`,
                 }}
               >
@@ -68,7 +68,7 @@ export default function FeaturedWork() {
                 <div className="absolute top-3 left-3">
                   <span
                     className={`px-2.5 py-1 rounded-full text-xs font-semibold border capitalize ${
-                      categoryColors[cs.category] || 'text-text-muted bg-white/5 border-white/10'
+                      categoryColors[cs.category] || 'text-[#9090a8] bg-[#f1f4fa] border-bg-border'
                     }`}
                   >
                     {cs.category.replace('-', ' ')}

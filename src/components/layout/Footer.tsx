@@ -51,9 +51,9 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-bg-surface border-t border-white/6">
+    <footer className="bg-bg-surface border-t border-bg-border">
       {/* Top CTA Strip */}
-      <div className="border-b border-white/6">
+      <div className="border-b border-bg-border">
         <div className="container-frame py-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <p className="font-mono text-xs text-text-muted tracking-widest uppercase mb-2">
@@ -103,7 +103,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center text-text-muted hover:text-text-primary hover:border-white/20 hover:bg-white/10 transition-all duration-150"
+                  className="w-9 h-9 rounded-lg bg-black/5 border border-bg-border flex items-center justify-center text-text-secondary hover:text-text-primary hover:border-text-primary/20 hover:bg-black/8 transition-all duration-150"
                 >
                   <Icon />
                 </a>
@@ -133,7 +133,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/5">
+      <div className="border-t border-bg-border">
         <div className="container-frame py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-text-muted text-xs">
             © {new Date().getFullYear()} FrameAxis. All rights reserved.

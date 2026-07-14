@@ -39,8 +39,8 @@ const differentiators = [
       'Your content, your IP. Full NDA from day one. We never share, repurpose, or reference your work without consent.',
     stat: '100%',
     statLabel: 'NDA coverage',
-    iconColor: 'text-purple-400',
-    iconBg: 'bg-purple-400/10 border-purple-400/25',
+    iconColor: 'text-purple-600',
+    iconBg: 'bg-purple-50 border-purple-200',
   },
 ]
 
@@ -69,7 +69,7 @@ export default function WhyFrameAxis() {
             return (
               <div
                 key={item.title}
-                className="group relative bg-bg-elevated rounded-2xl border border-white/8 p-8 hover:border-white/18 transition-all duration-300 overflow-hidden"
+                className="group relative bg-bg-surface rounded-2xl border border-bg-border p-8 hover:border-text-primary/20 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
               >
                 {/* Subtle glow on hover */}
                 <div
@@ -77,12 +77,12 @@ export default function WhyFrameAxis() {
                   style={{
                     background:
                       index === 0
-                        ? 'radial-gradient(ellipse 60% 60% at 0% 100%, rgba(200,255,0,0.05) 0%, transparent 70%)'
+                        ? 'radial-gradient(ellipse 60% 60% at 0% 100%, rgba(217,70,239,0.05) 0%, transparent 70%)'
                         : index === 1
-                        ? 'radial-gradient(ellipse 60% 60% at 100% 0%, rgba(91,74,255,0.06) 0%, transparent 70%)'
+                        ? 'radial-gradient(ellipse 60% 60% at 100% 0%, rgba(79,70,229,0.06) 0%, transparent 70%)'
                         : index === 2
-                        ? 'radial-gradient(ellipse 60% 60% at 0% 0%, rgba(0,232,122,0.06) 0%, transparent 70%)'
-                        : 'radial-gradient(ellipse 60% 60% at 100% 100%, rgba(192,132,252,0.06) 0%, transparent 70%)',
+                        ? 'radial-gradient(ellipse 60% 60% at 0% 0%, rgba(16,185,129,0.06) 0%, transparent 70%)'
+                        : 'radial-gradient(ellipse 60% 60% at 100% 100%, rgba(147,51,234,0.05) 0%, transparent 70%)',
                   }}
                   aria-hidden="true"
                 />

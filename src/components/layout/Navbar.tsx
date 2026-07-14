@@ -31,7 +31,7 @@ export default function Navbar() {
             className={cn(
               'flex items-center justify-between transition-all duration-500 rounded-2xl px-6 py-3 border',
               scrolled
-                ? 'bg-bg-surface/85 backdrop-blur-md border-white/8 shadow-[0_10px_40px_rgba(0,0,0,0.5)]'
+                ? 'bg-bg-surface/85 backdrop-blur-md border-bg-border shadow-[0_10px_35px_rgba(15,23,42,0.06)]'
                 : 'bg-transparent border-transparent'
             )}
           >
@@ -49,7 +49,7 @@ export default function Navbar() {
                 </span>
               </div>
               {/* Wordmark */}
-              <span className="font-display text-2xl tracking-widest text-[#f5f5f7] group-hover:text-white group-hover:scale-[1.02] transition-all">
+              <span className="font-display text-2xl tracking-widest text-text-primary group-hover:scale-[1.02] transition-all">
                 FRAMEAXIS
               </span>
             </Link>
@@ -60,7 +60,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-4 py-2 text-sm text-[#9090a8] hover:text-[#f0f0f5] rounded-xl hover:bg-white/5 transition-all duration-200 font-medium"
+                  className="px-4 py-2 text-sm text-text-secondary hover:text-text-primary rounded-xl hover:bg-black/5 transition-all duration-200 font-medium"
                 >
                   {link.label}
                 </Link>
@@ -107,18 +107,18 @@ export default function Navbar() {
         {/* Drawer */}
         <div
           className={cn(
-            'absolute top-0 right-0 h-full w-72 bg-bg-surface border-l border-white/8 flex flex-col transition-transform duration-300 ease-out',
+            'absolute top-0 right-0 h-full w-72 bg-bg-surface border-l border-bg-border flex flex-col transition-transform duration-300 ease-out',
             menuOpen ? 'translate-x-0' : 'translate-x-full'
           )}
         >
           {/* Drawer Header */}
-          <div className="flex items-center justify-between p-6 border-b border-white/8">
+          <div className="flex items-center justify-between p-6 border-b border-bg-border">
             <span className="font-display text-xl tracking-widest text-text-primary">
               FRAMEAXIS
             </span>
             <button
               onClick={() => setMenuOpen(false)}
-              className="p-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-white/5 transition-all"
+              className="p-1.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-black/5 transition-all"
               aria-label="Close menu"
             >
               <X size={20} />
@@ -132,7 +132,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="px-4 py-3 text-text-secondary hover:text-text-primary rounded-xl hover:bg-white/5 transition-all font-medium text-base"
+                className="px-4 py-3 text-text-secondary hover:text-text-primary rounded-xl hover:bg-black/5 transition-all font-medium text-base"
               >
                 {link.label}
               </Link>
@@ -140,7 +140,7 @@ export default function Navbar() {
           </nav>
 
           {/* Drawer CTA */}
-          <div className="p-6 border-t border-white/8 flex flex-col gap-3">
+          <div className="p-6 border-t border-bg-border flex flex-col gap-3">
             <Button href="/contact" variant="secondary" size="md" className="w-full justify-center">
               Contact
             </Button>

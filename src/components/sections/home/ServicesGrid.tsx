@@ -91,12 +91,12 @@ export default function ServicesGrid() {
           {/* Large featured card */}
           <Link
             href={services[0].href}
-            className="md:col-span-2 group relative bg-bg-elevated rounded-2xl border border-white/8 p-8 overflow-hidden hover:border-brand-primary/40 transition-all duration-300"
+            className="md:col-span-2 group relative bg-bg-surface rounded-2xl border border-bg-border p-8 overflow-hidden hover:border-brand-primary/40 shadow-sm transition-all duration-300"
           >
             <div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{
-                background: 'radial-gradient(ellipse 80% 80% at 0% 0%, rgba(91,74,255,0.1) 0%, transparent 60%)',
+                background: 'radial-gradient(ellipse 80% 80% at 0% 0%, rgba(79,70,229,0.06) 0%, transparent 60%)',
               }}
               aria-hidden="true"
             />
@@ -120,12 +120,12 @@ export default function ServicesGrid() {
           {/* Accent card */}
           <Link
             href={services[1].href}
-            className="group relative bg-bg-elevated rounded-2xl border border-white/8 p-7 overflow-hidden hover:border-brand-accent/40 transition-all duration-300"
+            className="group relative bg-bg-surface rounded-2xl border border-bg-border p-7 overflow-hidden hover:border-brand-accent/40 shadow-sm transition-all duration-300"
           >
             <div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{
-                background: 'radial-gradient(ellipse 80% 80% at 100% 0%, rgba(200,255,0,0.08) 0%, transparent 60%)',
+                background: 'radial-gradient(ellipse 80% 80% at 100% 0%, rgba(217,70,239,0.06) 0%, transparent 60%)',
               }}
               aria-hidden="true"
             />
@@ -152,9 +152,9 @@ export default function ServicesGrid() {
               <Link
                 key={service.title}
                 href={service.href}
-                className="group bg-bg-elevated rounded-2xl border border-white/8 p-7 hover:border-white/20 hover:bg-bg-elevated/80 transition-all duration-300"
+                className="group bg-bg-surface rounded-2xl border border-bg-border p-7 hover:border-text-primary/20 hover:shadow-md transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-10 h-10 rounded-xl bg-black/5 border border-bg-border flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                   <Icon size={18} className="text-text-secondary group-hover:text-text-primary transition-colors" />
                 </div>
                 <h3 className="font-semibold text-text-primary mb-2">{service.title}</h3>

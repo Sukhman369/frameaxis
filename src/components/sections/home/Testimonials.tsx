@@ -35,7 +35,7 @@ export default function Testimonials() {
             {testimonials.map((t) => (
               <div
                 key={t.id}
-                className="flex-shrink-0 w-80 snap-start bg-bg-elevated rounded-2xl border border-white/8 p-6 flex flex-col gap-4"
+                className="flex-shrink-0 w-80 snap-start bg-bg-surface rounded-2xl border border-bg-border p-6 flex flex-col gap-4 shadow-sm"
               >
                 {/* Stars */}
                 <div className="flex gap-0.5">
@@ -54,16 +54,16 @@ export default function Testimonials() {
                 </blockquote>
 
                 {/* Metric highlight */}
-                <div className="px-3 py-2 rounded-lg bg-brand-success/8 border border-brand-success/20">
+                <div className="px-3 py-2 rounded-lg bg-brand-success/5 border border-brand-success/15">
                   <p className="text-brand-success text-xs font-semibold font-mono">
                     ↑ {t.metric}
                   </p>
                 </div>
 
                 {/* Avatar & Info */}
-                <div className="flex items-center gap-3 pt-2 border-t border-white/8">
+                <div className="flex items-center gap-3 pt-2 border-t border-bg-border">
                   {/* Avatar placeholder */}
-                  <div className="w-9 h-9 rounded-full bg-brand-primary/20 border border-brand-primary/30 flex items-center justify-center text-brand-primary font-bold text-sm flex-shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-primary font-bold text-sm flex-shrink-0">
                     {t.name.charAt(0)}
                   </div>
                   <div>
@@ -82,12 +82,12 @@ export default function Testimonials() {
             <div className="font-display text-3xl text-text-primary">150+</div>
             <div className="text-xs text-text-muted uppercase tracking-wider mt-0.5">Clients Served</div>
           </div>
-          <div className="w-px h-10 bg-white/10 hidden sm:block" aria-hidden="true" />
+          <div className="w-px h-10 bg-bg-border hidden sm:block" aria-hidden="true" />
           <div>
             <div className="font-display text-3xl text-text-primary">4.9 / 5</div>
             <div className="text-xs text-text-muted uppercase tracking-wider mt-0.5">Average Rating</div>
           </div>
-          <div className="w-px h-10 bg-white/10 hidden sm:block" aria-hidden="true" />
+          <div className="w-px h-10 bg-bg-border hidden sm:block" aria-hidden="true" />
           <div>
             <div className="font-display text-3xl text-text-primary">97%</div>
             <div className="text-xs text-text-muted uppercase tracking-wider mt-0.5">Client Retention</div>

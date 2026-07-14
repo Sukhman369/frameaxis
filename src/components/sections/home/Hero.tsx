@@ -108,7 +108,7 @@ export default function Hero() {
         aria-hidden="true"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(91,74,255,0.18) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 80% 80%, rgba(200,255,0,0.06) 0%, transparent 60%)',
+            'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(79,70,229,0.07) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 85% 85%, rgba(217,70,239,0.04) 0%, transparent 60%)',
         }}
       />
 
@@ -149,8 +149,8 @@ export default function Hero() {
             See Our Work
           </Button>
           <Button href="/contact" variant="secondary" size="lg" className="gap-2.5">
-            <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-              <Play size={12} fill="currentColor" />
+            <span className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center flex-shrink-0">
+              <Play size={12} fill="currentColor" className="text-text-primary ml-0.5" />
             </span>
             Book Free Discovery Call
           </Button>
@@ -158,12 +158,12 @@ export default function Hero() {
 
         {/* Stats Strip */}
         <div
-          className="w-full max-w-3xl grid grid-cols-2 md:grid-cols-4 gap-px bg-white/8 rounded-2xl overflow-hidden border border-white/8 animate-[fade-up_0.7s_ease-out_0.55s_both]"
+          className="w-full max-w-3xl grid grid-cols-2 md:grid-cols-4 gap-px bg-bg-border rounded-2xl overflow-hidden border border-bg-border animate-[fade-up_0.7s_ease-out_0.55s_both]"
         >
           {stats.map(({ value, label }) => (
             <div
               key={label}
-              className="bg-bg-surface/70 backdrop-blur-sm px-6 py-5 text-center"
+              className="bg-bg-surface/85 backdrop-blur-sm px-6 py-5 text-center"
             >
               <div className="font-display text-3xl text-text-primary tracking-wide mb-0.5">
                 {value}
