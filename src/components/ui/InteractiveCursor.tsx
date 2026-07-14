@@ -15,6 +15,10 @@ export default function InteractiveCursor() {
   const cursorXSpring = useSpring(cursorX, springConfig)
   const cursorYSpring = useSpring(cursorY, springConfig)
 
+  // Declare center dot coordinates springs at the top level
+  const dotXSpring = useSpring(cursorX, { damping: 15, stiffness: 350 })
+  const dotYSpring = useSpring(cursorY, { damping: 15, stiffness: 350 })
+
   useEffect(() => {
     // Disable interactive cursor on touchscreens (tablets/phones) to prevent glitching
     const isTouchDevice = 
@@ -65,6 +69,7 @@ export default function InteractiveCursor() {
     }
   }, [cursorX, cursorY])
 
+  // React rules of hooks: Do not conditionally return until all hooks are executed
   if (!visible) return null
 
   return (
@@ -86,15 +91,12 @@ export default function InteractiveCursor() {
 
       {/* Center dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-brand-accent pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-brand-accent pointer-events-none z-[9999] mix-blend-difference translate-x-[13px] translate-y-[13px]"
         style={{
-          // Offsets centering of the 6px dot inside the 32px container
-          x: useSpring(useMotionValue(-100), { damping: 15, stiffness: 350 }),
-          y: useSpring(useMotionValue(-100), { damping: 15, stiffness: 350 }),
+          x: dotXSpring,
+          y: dotYSpring,
         }}
         animate={{
-          x: cursorX.get() + 13,
-          y: cursorY.get() + 13,
           scale: pressed ? 0.5 : hovered ? 0 : 1,
         }}
         transition={{ type: 'tween', duration: 0.1 }}
