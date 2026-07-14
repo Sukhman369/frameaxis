@@ -79,7 +79,10 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${bebasNeue.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="bg-bg-base text-text-primary antialiased overflow-x-hidden">
+      <body
+        style={{ fontFamily: 'var(--font-inter, Inter, system-ui, sans-serif)' }}
+        className="bg-[#080810] text-[#f0f0f5] antialiased overflow-x-hidden"
+      >
         {children}
       </body>
     </html>
