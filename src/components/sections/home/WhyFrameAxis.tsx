@@ -1,5 +1,6 @@
 import Badge from '@/components/ui/Badge'
 import { Zap, UserCheck, Shield, TrendingUp } from 'lucide-react'
+import SpotlightCard from '@/components/ui/SpotlightCard'
 
 const differentiators = [
   {
@@ -66,27 +67,18 @@ export default function WhyFrameAxis() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {differentiators.map((item, index) => {
             const Icon = item.icon
+            const glowColors = [
+              'rgba(217, 70, 239, 0.08)',
+              'rgba(79, 70, 229, 0.08)',
+              'rgba(16, 185, 129, 0.08)',
+              'rgba(147, 51, 234, 0.08)',
+            ]
             return (
-              <div
+              <SpotlightCard
                 key={item.title}
-                className="group relative bg-bg-surface rounded-2xl border border-bg-border p-8 hover:border-text-primary/20 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
+                className="bg-bg-surface rounded-2xl border border-bg-border p-8 hover:border-text-primary/20 shadow-sm hover:shadow-md transition-all duration-300 pointer-events-auto"
+                glowColor={glowColors[index]}
               >
-                {/* Subtle glow on hover */}
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background:
-                      index === 0
-                        ? 'radial-gradient(ellipse 60% 60% at 0% 100%, rgba(217,70,239,0.05) 0%, transparent 70%)'
-                        : index === 1
-                        ? 'radial-gradient(ellipse 60% 60% at 100% 0%, rgba(79,70,229,0.06) 0%, transparent 70%)'
-                        : index === 2
-                        ? 'radial-gradient(ellipse 60% 60% at 0% 0%, rgba(16,185,129,0.06) 0%, transparent 70%)'
-                        : 'radial-gradient(ellipse 60% 60% at 100% 100%, rgba(147,51,234,0.05) 0%, transparent 70%)',
-                  }}
-                  aria-hidden="true"
-                />
-
                 <div className="relative z-10 flex gap-6">
                   {/* Icon */}
                   <div
@@ -114,7 +106,7 @@ export default function WhyFrameAxis() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
             )
           })}
         </div>

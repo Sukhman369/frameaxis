@@ -69,6 +69,8 @@ export const metadata: Metadata = {
   },
 }
 
+import InteractiveCursor from '@/components/ui/InteractiveCursor'
+
 export default function RootLayout({
   children,
 }: {
@@ -83,6 +85,7 @@ export default function RootLayout({
         style={{ fontFamily: 'var(--font-inter, Inter, system-ui, sans-serif)' }}
         className="bg-bg-base text-text-primary antialiased overflow-x-hidden"
       >
+        <InteractiveCursor />
         {children}
       </body>
     </html>

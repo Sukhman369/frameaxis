@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import Badge from '@/components/ui/Badge'
-import {
-  Clapperboard, Smartphone, Megaphone, Film, MonitorPlay, Mic
-} from 'lucide-react'
+import { Clapperboard, Smartphone, Megaphone, Film, MonitorPlay, Mic } from 'lucide-react'
+import SpotlightCard from '@/components/ui/SpotlightCard'
 
 const services = [
   {
@@ -91,58 +90,54 @@ export default function ServicesGrid() {
           {/* Large featured card */}
           <Link
             href={services[0].href}
-            className="md:col-span-2 group relative bg-bg-surface rounded-2xl border border-bg-border p-8 overflow-hidden hover:border-brand-primary/40 shadow-sm transition-all duration-300"
+            className="md:col-span-2 group"
           >
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{
-                background: 'radial-gradient(ellipse 80% 80% at 0% 0%, rgba(79,70,229,0.06) 0%, transparent 60%)',
-              }}
-              aria-hidden="true"
-            />
-            <div className="relative z-10">
-              <div className="w-12 h-12 rounded-xl bg-brand-primary/15 border border-brand-primary/25 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Clapperboard size={22} className="text-brand-primary" />
+            <SpotlightCard
+              className="bg-bg-surface rounded-2xl border border-bg-border p-8 h-full hover:border-brand-primary/40 shadow-sm hover:shadow-md transition-all duration-300"
+              glowColor="rgba(79, 70, 229, 0.08)"
+            >
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-brand-primary/15 border border-brand-primary/25 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Clapperboard size={22} className="text-brand-primary" />
+                </div>
+                <Badge variant="brand" className="mb-4">Most Requested</Badge>
+                <h3 className="font-display text-2xl md:text-3xl text-text-primary tracking-wide mb-3">
+                  YOUTUBE & LONG-FORM
+                </h3>
+                <p className="text-text-secondary leading-relaxed max-w-md">
+                  {services[0].description}
+                </p>
+                <div className="mt-6 flex items-center gap-2 text-brand-primary text-sm font-semibold group-hover:gap-3 transition-all">
+                  Learn more <span>→</span>
+                </div>
               </div>
-              <Badge variant="brand" className="mb-4">Most Requested</Badge>
-              <h3 className="font-display text-2xl md:text-3xl text-text-primary tracking-wide mb-3">
-                YOUTUBE & LONG-FORM
-              </h3>
-              <p className="text-text-secondary leading-relaxed max-w-md">
-                {services[0].description}
-              </p>
-              <div className="mt-6 flex items-center gap-2 text-brand-primary text-sm font-semibold group-hover:gap-3 transition-all">
-                Learn more <span>→</span>
-              </div>
-            </div>
+            </SpotlightCard>
           </Link>
 
           {/* Accent card */}
           <Link
             href={services[1].href}
-            className="group relative bg-bg-surface rounded-2xl border border-bg-border p-7 overflow-hidden hover:border-brand-accent/40 shadow-sm transition-all duration-300"
+            className="group"
           >
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{
-                background: 'radial-gradient(ellipse 80% 80% at 100% 0%, rgba(217,70,239,0.06) 0%, transparent 60%)',
-              }}
-              aria-hidden="true"
-            />
-            <div className="relative z-10">
-              <div className="w-11 h-11 rounded-xl bg-brand-accent/10 border border-brand-accent/25 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                <Smartphone size={20} className="text-brand-accent" />
+            <SpotlightCard
+              className="bg-bg-surface rounded-2xl border border-bg-border p-7 h-full hover:border-brand-accent/40 shadow-sm hover:shadow-md transition-all duration-300"
+              glowColor="rgba(217, 70, 239, 0.08)"
+            >
+              <div className="relative z-10">
+                <div className="w-11 h-11 rounded-xl bg-brand-accent/10 border border-brand-accent/25 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                  <Smartphone size={20} className="text-brand-accent" />
+                </div>
+                <h3 className="font-display text-xl text-text-primary tracking-wide mb-2">
+                  REELS & SHORTS
+                </h3>
+                <p className="text-text-secondary text-sm leading-relaxed">
+                  {services[1].description}
+                </p>
+                <div className="mt-4 text-brand-accent text-sm font-semibold group-hover:underline">
+                  Learn more →
+                </div>
               </div>
-              <h3 className="font-display text-xl text-text-primary tracking-wide mb-2">
-                REELS & SHORTS
-              </h3>
-              <p className="text-text-secondary text-sm leading-relaxed">
-                {services[1].description}
-              </p>
-              <div className="mt-4 text-brand-accent text-sm font-semibold group-hover:underline">
-                Learn more →
-              </div>
-            </div>
+            </SpotlightCard>
           </Link>
 
           {/* Remaining 4 cards */}
@@ -152,16 +147,21 @@ export default function ServicesGrid() {
               <Link
                 key={service.title}
                 href={service.href}
-                className="group bg-bg-surface rounded-2xl border border-bg-border p-7 hover:border-text-primary/20 hover:shadow-md transition-all duration-300"
+                className="group"
               >
-                <div className="w-10 h-10 rounded-xl bg-black/5 border border-bg-border flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Icon size={18} className="text-text-secondary group-hover:text-text-primary transition-colors" />
-                </div>
-                <h3 className="font-semibold text-text-primary mb-2">{service.title}</h3>
-                <p className="text-text-muted text-sm leading-relaxed">{service.description}</p>
-                <div className="mt-4 text-text-muted text-xs font-semibold group-hover:text-text-secondary transition-colors">
-                  Learn more →
-                </div>
+                <SpotlightCard
+                  className="bg-bg-surface rounded-2xl border border-bg-border p-7 h-full hover:border-text-primary/20 hover:shadow-md transition-all duration-300"
+                  glowColor="rgba(79, 70, 229, 0.05)"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-black/5 border border-bg-border flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Icon size={18} className="text-text-secondary group-hover:text-text-primary transition-colors" />
+                  </div>
+                  <h3 className="font-semibold text-text-primary mb-2">{service.title}</h3>
+                  <p className="text-text-muted text-sm leading-relaxed">{service.description}</p>
+                  <div className="mt-4 text-text-muted text-xs font-semibold group-hover:text-text-secondary transition-colors">
+                    Learn more →
+                  </div>
+                </SpotlightCard>
               </Link>
             )
           })}

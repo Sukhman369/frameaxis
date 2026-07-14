@@ -28,23 +28,38 @@ export default function Hero() {
       x: number; y: number; vx: number; vy: number; size: number; opacity: number
     }> = []
 
+    const mouse = { x: -1000, y: -1000, radius: 180 }
+
     const resize = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
     }
+    
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.x = e.clientX
+      mouse.y = e.clientY
+    }
+
+    const handleMouseLeave = () => {
+      mouse.x = -1000
+      mouse.y = -1000
+    }
+
     resize()
     window.addEventListener('resize', resize)
+    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mouseleave', handleMouseLeave)
 
     // Init particles
-    const PARTICLE_COUNT = 80
+    const PARTICLE_COUNT = 85
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.5 + 0.1,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        size: Math.random() * 2.5 + 0.5,
+        opacity: Math.random() * 0.4 + 0.15,
       })
     }
 
@@ -52,14 +67,26 @@ export default function Hero() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       particles.forEach((p) => {
+        // Dynamic magnetic drag force pull towards cursor coordinates
+        const dx = mouse.x - p.x
+        const dy = mouse.y - p.y
+        const dist = Math.sqrt(dx * dx + dy * dy)
+        
+        if (dist < mouse.radius) {
+          const force = (mouse.radius - dist) / mouse.radius
+          p.x += (dx / dist) * force * 0.5
+          p.y += (dy / dist) * force * 0.5
+        }
+
         p.x += p.vx
         p.y += p.vy
+        
         if (p.x < 0 || p.x > canvas.width) p.vx *= -1
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(91,74,255,${p.opacity})`
+        ctx.fillStyle = `rgba(79,70,229,${p.opacity})`
         ctx.fill()
       })
 
@@ -73,7 +100,7 @@ export default function Hero() {
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.strokeStyle = `rgba(91,74,255,${0.12 * (1 - dist / 120)})`
+            ctx.strokeStyle = `rgba(79,70,229,${0.15 * (1 - dist / 120)})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
@@ -86,6 +113,8 @@ export default function Hero() {
 
     return () => {
       window.removeEventListener('resize', resize)
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mouseleave', handleMouseLeave)
       cancelAnimationFrame(animId)
     }
   }, [])
