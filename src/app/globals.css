@@ -18,7 +18,7 @@
   --text-secondary: #9090a8;
   --text-muted: #5a5a72;
 
-  /* Fonts mapped from the Next.js google font CSS variables */
+  /* Fonts mapped from Next.js */
   --font-display: var(--font-bebas), "Bebas Neue", sans-serif;
   --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
   --font-mono: var(--font-mono), monospace;
@@ -74,84 +74,84 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ─── Custom Tailwind Utilities (v4 Syntax) ──────────────────── */
-@utility container-frame {
+/* ─── Utility Classes (Standard CSS) ────────────────────────── */
+.container-frame {
   width: 100%;
   max-width: 1280px;
   margin-inline: auto;
   padding-inline: max(1.5rem, 5vw);
 }
 
-@utility text-hero {
+.text-hero {
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 9vw, 9rem);
   line-height: 0.95;
   letter-spacing: -0.01em;
 }
 
-@utility text-section {
+.text-section {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5.5vw, 5rem);
   line-height: 1;
 }
 
-@utility font-display {
+.font-display {
   font-family: var(--font-display);
 }
 
-@utility font-sans {
+.font-sans {
   font-family: var(--font-sans);
 }
 
-@utility gradient-brand {
+.gradient-brand {
   background: linear-gradient(135deg, #5b4aff 0%, #8b5cf6 100%);
 }
 
-@utility gradient-accent {
+.gradient-accent {
   background: linear-gradient(135deg, #c8ff00 0%, #00e87a 100%);
 }
 
-@utility gradient-text-brand {
+.gradient-text-brand {
   background: linear-gradient(135deg, #5b4aff 0%, #a78bfa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-@utility gradient-text-accent {
+.gradient-text-accent {
   background: linear-gradient(135deg, #c8ff00 0%, #00e87a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-@utility glass {
+.glass {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-@utility glass-dark {
+.glass-dark {
   background: rgba(8, 8, 16, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-@utility glow-brand {
+.glow-brand {
   box-shadow: 0 0 30px rgba(91, 74, 255, 0.35);
 }
 
-@utility glow-accent {
+.glow-accent {
   box-shadow: 0 0 30px rgba(200, 255, 0, 0.3);
 }
 
-@utility noise-overlay {
+.noise-overlay {
   position: relative;
 }
 
-@utility noise-overlay::after {
+.noise-overlay::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -161,7 +161,7 @@
   opacity: 0.4;
 }
 
-@utility section-padding {
+.section-padding {
   padding-block: clamp(5rem, 12vw, 9rem);
 }
 
