@@ -113,7 +113,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="container-frame relative z-10 flex flex-col items-center text-center pt-28 pb-16">
+      <div className="container-frame relative z-10 flex flex-col items-center text-center pt-44 pb-20">
         {/* Top Badge */}
         <Badge variant="brand" className="mb-8 animate-[fade-up_0.6s_ease-out_0.1s_both]">
           <span className="w-1.5 h-1.5 rounded-full bg-brand-primary inline-block" />
