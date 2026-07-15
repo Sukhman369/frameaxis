@@ -1,0 +1,26 @@
+# Exclude build, cache, and package folders from AST/semantic parsing
+node_modules/
+.next/
+.git/
+.agent/
+graphify-out/
+out/
+build/
+dist/
+coverage/
+.vercel/
+*.log
+*.lock
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+.DS_Store
+
+# Exclude static assets unless they need semantic description
+public/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.svg
