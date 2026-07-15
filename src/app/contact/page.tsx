@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, type FormEvent } from 'react'
+import { useState, useEffect, type FormEvent, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import Badge from '@/components/ui/Badge'
@@ -8,7 +9,7 @@ import Button from '@/components/ui/Button'
 import SpotlightCard from '@/components/ui/SpotlightCard'
 import { Mail, Clock, ShieldCheck, Send, Check } from 'lucide-react'
 
-export default function ContactPage() {
+function ContactPageContent() {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -20,6 +21,38 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
+
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    const plan = searchParams.get('plan')
+    const long = searchParams.get('long')
+    const short = searchParams.get('short')
+    const speed = searchParams.get('speed')
+
+    if (plan || long || short || speed) {
+      let mappedService = 'custom'
+      if (plan === 'creator') mappedService = 'youtube'
+      else if (plan === 'growth') mappedService = 'reels'
+      else if (plan === 'studio') mappedService = 'brand'
+
+      const capitalizedPlan = plan ? plan.charAt(0).toUpperCase() + plan.slice(1) : 'Custom'
+      const speedLabel = speed === 'express' ? 'Express (24h turnarounds)' : 'Standard (48-72h)'
+      
+      const prefillDetails = `[Pricing Estimate Brief: ${capitalizedPlan} Plan]
+- Long-Form Volume: ${long ?? 0} videos/mo
+- Short-Form Volume: ${short ?? 0} videos/mo
+- Turnaround Speed: ${speedLabel}
+
+Let's discuss my specific formatting cues and editing retainers...`
+
+      setFormData(prev => ({
+        ...prev,
+        serviceType: mappedService,
+        projectDetails: prefillDetails
+      }))
+    }
+  }, [searchParams])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -262,5 +295,17 @@ export default function ContactPage() {
       </main>
       <Footer />
     </>
+  )
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-bg-base flex items-center justify-center text-text-muted text-sm font-medium">
+        Loading project intake briefs...
+      </div>
+    }>
+      <ContactPageContent />
+    </Suspense>
   )
 }

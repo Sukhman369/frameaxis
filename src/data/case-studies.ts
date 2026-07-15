@@ -38,6 +38,7 @@ export const caseStudies: CaseStudy[] = [
     category: 'social-ads',
     tags: ['Meta Ads', 'TikTok', 'Direct Response', 'UGC'],
     heroImage: '/images/work/ads-hero.jpg',
+    heroVideo: 'https://www.youtube.com/watch?v=aqz-KE-BPKQ',
     thumbnailImage: '/images/work/ads-thumb.jpg',
     headline: '3.2× ROAS on Meta Ads',
     brief:
@@ -68,6 +69,7 @@ export const caseStudies: CaseStudy[] = [
     category: 'saas',
     tags: ['Brand Film', 'SaaS', 'Product Demo', 'Corporate'],
     heroImage: '/images/work/saas-hero.jpg',
+    heroVideo: 'https://www.youtube.com/watch?v=ysz5S6PUM-U',
     thumbnailImage: '/images/work/saas-thumb.jpg',
     headline: '2.8× Demo Request Conversion',
     brief:
@@ -98,6 +100,7 @@ export const caseStudies: CaseStudy[] = [
     category: 'podcast',
     tags: ['Podcast', 'Multi-Cam', 'YouTube', 'Clips'],
     heroImage: '/images/work/podcast-hero.jpg',
+    heroVideo: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     thumbnailImage: '/images/work/podcast-thumb.jpg',
     headline: '10× Clip Output Per Episode',
     brief:

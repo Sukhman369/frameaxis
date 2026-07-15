@@ -70,6 +70,7 @@ export const metadata: Metadata = {
 }
 
 import InteractiveCursor from '@/components/ui/InteractiveCursor'
+import WhatsAppWidget from '@/components/ui/WhatsAppWidget'
 
 export default function RootLayout({
   children,
@@ -87,6 +88,7 @@ export default function RootLayout({
       >
         <InteractiveCursor />
         {children}
+        <WhatsAppWidget />
       </body>
     </html>
   )

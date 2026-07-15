@@ -1,7 +1,11 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import Badge from '@/components/ui/Badge'
 import { featuredCaseStudies } from '@/data/case-studies'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Play } from 'lucide-react'
+import VideoModal from '@/components/ui/VideoModal'
 
 const categoryColors: Record<string, string> = {
   youtube: 'text-[#ef4444] bg-[#ee4444]/5 border-[#ef4444]/15',
@@ -13,6 +17,14 @@ const categoryColors: Record<string, string> = {
 }
 
 export default function FeaturedWork() {
+  const [modalOpen, setModalOpen] = useState(false)
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
+
+  const handlePlayVideo = (url: string) => {
+    setSelectedVideo(url)
+    setModalOpen(true)
+  }
+
   return (
     <section id="work" className="section-padding bg-bg-surface/30">
       <div className="container-frame">
@@ -37,14 +49,14 @@ export default function FeaturedWork() {
         {/* Case Study Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredCaseStudies.map((cs, index) => (
-            <Link
+            <div
               key={cs.slug}
-              href={`/work/${cs.slug}`}
-              className="group flex flex-col bg-bg-surface rounded-2xl border border-bg-border overflow-hidden hover:border-text-primary/20 shadow-sm transition-all duration-300 hover:-translate-y-1"
+              className="group flex flex-col bg-bg-surface rounded-2xl border border-bg-border overflow-hidden hover:border-brand-primary/20 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
             >
-              {/* Thumbnail */}
+              {/* Thumbnail Container (Plays video on click) */}
               <div
-                className="aspect-video relative overflow-hidden"
+                onClick={() => cs.heroVideo && handlePlayVideo(cs.heroVideo)}
+                className="aspect-video relative overflow-hidden cursor-pointer group/thumb"
                 style={{
                   background: `linear-gradient(135deg, ${
                     index === 0
@@ -55,19 +67,17 @@ export default function FeaturedWork() {
                   } 100%)`,
                 }}
               >
-                {/* Placeholder visual */}
+                {/* Play Button Indicator */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-white/60 ml-1">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
+                  <div className="w-14 h-14 rounded-full bg-white/95 border border-bg-border flex items-center justify-center text-brand-primary shadow-lg group-hover/thumb:scale-110 group-hover/thumb:text-brand-accent transition-all duration-300">
+                    <Play size={18} fill="currentColor" className="ml-1" />
                   </div>
                 </div>
 
                 {/* Category pill */}
-                <div className="absolute top-3 left-3">
+                <div className="absolute top-3 left-3 z-10">
                   <span
-                    className={`px-2.5 py-1 rounded-full text-xs font-semibold border capitalize ${
+                    className={`px-2.5 py-1 rounded-full text-[10px] font-semibold border capitalize ${
                       categoryColors[cs.category] || 'text-[#9090a8] bg-[#f1f4fa] border-bg-border'
                     }`}
                   >
@@ -75,42 +85,53 @@ export default function FeaturedWork() {
                   </span>
                 </div>
 
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="text-white text-sm font-semibold flex items-center gap-1.5">
-                    View Case Study <ArrowUpRight size={14} />
+                {/* Hover overlay description */}
+                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover/thumb:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="text-white text-xs font-semibold flex items-center gap-1.5">
+                    Play Preview Video
                   </span>
                 </div>
               </div>
 
-              {/* Card Content */}
-              <div className="flex flex-col flex-1 p-6">
-                <p className="text-xs text-text-muted font-mono uppercase tracking-wider mb-2">
-                  {cs.clientAnonymized ? 'Confidential Client' : cs.client}
-                </p>
-                <h3 className="font-semibold text-text-primary text-base mb-3 leading-snug">
-                  {cs.headline}
-                </h3>
-                <p className="text-text-muted text-sm leading-relaxed mb-4 line-clamp-2">
-                  {cs.brief}
-                </p>
+              {/* Card Content (Navigates to case study on click) */}
+              <Link
+                href={`/work/${cs.slug}`}
+                className="flex flex-col flex-1 p-6 cursor-pointer"
+              >
+                <div className="flex flex-col flex-1">
+                  <p className="text-[10px] text-text-muted font-mono uppercase tracking-wider mb-2">
+                    {cs.clientAnonymized ? 'Confidential Client' : cs.client}
+                  </p>
+                  <h3 className="font-semibold text-text-primary text-base mb-3 leading-snug group-hover:text-brand-primary transition-colors">
+                    {cs.headline}
+                  </h3>
+                  <p className="text-text-muted text-[13px] leading-relaxed mb-4 line-clamp-2">
+                    {cs.brief}
+                  </p>
 
-                {/* Metrics */}
-                <div className="mt-auto flex flex-wrap gap-2">
-                  {cs.metrics.slice(0, 2).map((m) => (
-                    <span
-                      key={m.label}
-                      className="px-2.5 py-1 rounded-lg bg-brand-success/10 border border-brand-success/20 text-brand-success text-xs font-semibold font-mono"
-                    >
-                      {m.value} {m.label}
-                    </span>
-                  ))}
+                  {/* Metrics */}
+                  <div className="mt-auto flex flex-wrap gap-2">
+                    {cs.metrics.slice(0, 2).map((m) => (
+                      <span
+                        key={m.label}
+                        className="px-2.5 py-1 rounded-lg bg-brand-success/15 border border-brand-success/20 text-brand-success text-[10px] font-bold font-mono"
+                      >
+                        {m.value} {m.label}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
       </div>
+
+      <VideoModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        videoUrl={selectedVideo}
+      />
     </section>
   )
 }

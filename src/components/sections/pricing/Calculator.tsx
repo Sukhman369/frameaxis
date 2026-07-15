@@ -229,7 +229,7 @@ export default function Calculator() {
 
           <div className="mt-8 border-t border-bg-border pt-4">
             <Button 
-              href={mathData.planId === 'enterprise' ? '/contact' : `/contact?plan=${mathData.planId}`}
+              href={`/contact?plan=${mathData.planId}&long=${longFormCount}&short=${shortFormCount}&speed=${speed}`}
               variant="primary" 
               size="sm" 
               className="w-full justify-center text-xs"

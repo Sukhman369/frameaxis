@@ -7,6 +7,7 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import Badge from '@/components/ui/Badge'
 import SpotlightCard from '@/components/ui/SpotlightCard'
+import VideoModal from '@/components/ui/VideoModal'
 import { caseStudies } from '@/data/case-studies'
 import { ArrowRight, Play } from 'lucide-react'
 
@@ -20,6 +21,13 @@ const categories = [
 
 export default function WorkPage() {
   const [activeCategory, setActiveCategory] = useState('all')
+  const [modalOpen, setModalOpen] = useState(false)
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
+
+  const handlePlayVideo = (url: string) => {
+    setSelectedVideo(url)
+    setModalOpen(true)
+  }
 
   const filteredStudies = caseStudies.filter((study) => {
     if (activeCategory === 'all') return true
@@ -81,13 +89,16 @@ export default function WorkPage() {
                     className="group bg-bg-surface border border-bg-border rounded-3xl overflow-hidden hover:border-brand-primary/20 shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col"
                   >
                     {/* Media Thumbnail Container */}
-                    <div className="relative aspect-video w-full overflow-hidden bg-bg-elevated border-b border-bg-border">
+                    <div 
+                      onClick={() => study.heroVideo && handlePlayVideo(study.heroVideo)}
+                      className="relative aspect-video w-full overflow-hidden bg-bg-elevated border-b border-bg-border cursor-pointer group/thumb"
+                    >
                       {/* Gradient Overlay */}
                       <div className="absolute inset-0 bg-neutral-900/10 group-hover:bg-neutral-900/25 transition-all duration-300 z-10" />
                       
                       {/* Dummy Thumbnail Visual */}
                       <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-brand-primary/5 to-brand-accent/5">
-                        <div className="w-16 h-16 rounded-full bg-bg-surface/90 border border-bg-border flex items-center justify-center text-brand-primary shadow-lg group-hover:scale-110 group-hover:text-brand-accent transition-all duration-300 z-20">
+                        <div className="w-16 h-16 rounded-full bg-bg-surface/90 border border-bg-border flex items-center justify-center text-brand-primary shadow-lg group-hover/thumb:scale-110 group-hover/thumb:text-brand-accent transition-all duration-300 z-20">
                           <Play size={20} fill="currentColor" className="ml-1" />
                         </div>
                         <div className="absolute bottom-4 left-4 z-20 flex gap-2">
@@ -155,6 +166,12 @@ export default function WorkPage() {
         </section>
       </main>
       <Footer />
+      
+      <VideoModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        videoUrl={selectedVideo}
+      />
     </>
   )
 }
