@@ -8,6 +8,7 @@ import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
 import { pricingTiers, enterpriseTier } from '@/data/pricing'
 import { Check, X, ChevronDown, HelpCircle, Star } from 'lucide-react'
+import Calculator from '@/components/sections/pricing/Calculator'
 
 const faqs = [
   {
@@ -180,6 +181,11 @@ export default function PricingPage() {
                 </div>
               )
             })}
+          </div>
+
+          {/* Pricing Calculator Widget Segment */}
+          <div className="my-14">
+            <Calculator />
           </div>
 
           {/* Custom Enterprise Banner */}
