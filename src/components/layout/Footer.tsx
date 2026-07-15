@@ -60,7 +60,7 @@ export default function Footer() {
               Ready to scale?
             </p>
             <h2 className="font-display text-3xl md:text-4xl text-text-primary tracking-wide">
-              LET'S BUILD SOMETHING GREAT
+              {"LET'S BUILD SOMETHING GREAT"}
             </h2>
           </div>
           <Link

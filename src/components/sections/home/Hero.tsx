@@ -24,7 +24,7 @@ export default function Hero() {
     if (!ctx) return
 
     let animId: number
-    let particles: Array<{
+    const particles: Array<{
       x: number; y: number; vx: number; vy: number; size: number; opacity: number
     }> = []
 

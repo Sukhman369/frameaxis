@@ -58,8 +58,7 @@ export default function WhyFrameAxis() {
             <span className="gradient-text-brand">YOUR GROWTH ENGINE.</span>
           </h2>
           <p className="text-text-secondary leading-relaxed">
-            Hundreds of editors exist. One that treats your content like their own business doesn't.
-            Here's what makes us different.
+            {"Hundreds of editors exist. One that treats your content like their own business doesn't. Here's what makes us different."}
           </p>
         </div>
 

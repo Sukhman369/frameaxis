@@ -26,9 +26,12 @@ export default function InteractiveCursor() {
       navigator.maxTouchPoints > 0 || 
       window.matchMedia('(pointer: coarse)').matches
       
-    if (isTouchDevice) return
-
-    setVisible(true)
+    let frameId: number
+    if (!isTouchDevice) {
+      frameId = requestAnimationFrame(() => {
+        setVisible(true)
+      })
+    }
 
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX - 16)
@@ -62,6 +65,7 @@ export default function InteractiveCursor() {
     window.addEventListener('mouseup', handleMouseUp)
 
     return () => {
+      if (frameId) cancelAnimationFrame(frameId)
       window.removeEventListener('mousemove', moveCursor)
       window.removeEventListener('mouseover', handleMouseOver)
       window.removeEventListener('mousedown', handleMouseDown)

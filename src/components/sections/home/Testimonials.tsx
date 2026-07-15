@@ -10,7 +10,7 @@ export default function Testimonials() {
         <div className="text-center mb-12">
           <Badge variant="muted" className="mb-4">Client Stories</Badge>
           <h2 className="text-section text-text-primary">
-            DON'T TAKE{' '}
+            {"DON'T TAKE"}{' '}
             <span className="gradient-text-brand">OUR WORD</span>
             <br />
             FOR IT.
@@ -50,7 +50,7 @@ export default function Testimonials() {
 
                 {/* Quote */}
                 <blockquote className="text-text-secondary text-sm leading-relaxed flex-1">
-                  "{t.quote}"
+                  &ldquo;{t.quote}&rdquo;
                 </blockquote>
 
                 {/* Metric highlight */}

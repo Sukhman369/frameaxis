@@ -56,7 +56,6 @@ export default function PricingTeaser() {
           {pricingTiers.map((tier) => {
             const price = annual ? tier.price.annual : tier.price.monthly
             const isPopular = tier.badge === 'most-popular'
-            const isBestValue = tier.badge === 'best-value'
 
              return (
               <div
